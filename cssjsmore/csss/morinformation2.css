@@ -1,0 +1,204 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #8c52ff, #ff914d);
+    color: white;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    height: 50px; /* Adjust the size of your logo image */
+    margin-right: 10px; /* Space between the image and text */
+}
+
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
+    height: 25px; /* Adjust height to ensure space for bars */
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.menu-icon .bar {
+    height: 4px;
+    background-color: white;
+    width: 100%;
+    transition: all 0.3s ease;
+    position: absolute;
+}
+
+.menu-icon .bar1 {
+    top: 0;
+}
+
+.menu-icon .bar2 {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-icon .bar3 {
+    bottom: 0;
+}
+
+nav {
+    display: none;
+    opacity: 0;
+    transform: translateX(-100%); /* Start hidden off-screen */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 400%;
+    width: 140px; /* Adjust width for bubble effect */
+    background-color: #FF6600;
+    border-top-left-radius: 20px; /* Rounded corners for bubble effect */
+    border-bottom-left-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* Navigation menu open state */
+nav.open {
+    display: block;
+    opacity: 1;
+    transform: translateX(0); /* Slide into view */
+}
+
+/* Navigation menu list styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto; /* Enable scrolling if needed */
+}
+
+/* Navigation menu item styles */
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease, padding-left 0.3s ease; /* Smooth transition */
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding-left: 30px; /* Indicate active item with padding */
+}
+
+@media (min-width: 768px) {
+    nav {
+        display: block;
+        opacity: 1;
+        transform: none; /* Remove transform for larger screens */
+        position: static;
+        width: auto; /* Default width */
+        height: auto; /* Default height */
+        background-color: transparent; /* Transparent background */
+        box-shadow: none; /* Remove shadow for larger screens */
+        border-radius: 0; /* Remove rounded corners for larger screens */
+    }
+
+    nav ul {
+        flex-direction: row; /* Horizontal layout */
+    }
+
+    nav ul li {
+        margin: 0 20px; /* Spacing between menu items */
+    }
+
+    nav ul li a {
+        padding: 15px 20px;
+    }
+
+    .menu-icon {
+        display: none; /* Hide menu icon on large screens */
+    }
+}
+
+
+
+.open .bar1 {
+    transform: rotate(45deg);
+    top: 50%;
+    margin-top: -2px; /* Adjust for better alignment */
+}
+
+.open .bar2 {
+    opacity: 0;
+}
+
+.open .bar3 {
+    transform: rotate(-45deg);
+    bottom: 50%;
+    margin-bottom: -2px; /* Adjust for better alignment */
+}
+
+nav.open {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: linear-gradient(45deg, #8c52ff, #ff914d);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+/* תפריט ראשי */
+/* תפריט ראשי */
+
+.scroll-line-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 5;
+}
+
+.scroll-line {
+    position: absolute;
+    left: 3px; /* Adjust the position as needed */
+    width: 4px; /* Adjust the width as needed */
+    height: 80vh; /* Make the bar longer */
+    background: linear-gradient(45deg, #ff914d, #8c52ff); /* Gradient color */
+    border-radius: 2px; /* Rounded edges */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow for a modern look */
+    transition: top 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth and modern transition */
+}
+
+.dummy-content {
+    height: 3000px; /* Adjust the height as needed to create scrollable content */
+    background: linear-gradient(white, lightgray);
+}

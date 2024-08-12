@@ -1,0 +1,545 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+  width: 100%; /* Ensures the width is 100% of the viewport */
+  padding: 0; 
+    align-items: center;
+    min-height: 100vh; /* This ensures the body takes up the full height of the viewport */
+    justify-content: center;
+    
+    
+}
+
+* {
+    box-sizing: border-box; /* Makes sure padding and border are included in the width */
+  }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #8c52ff, #ff914d);
+    color: white;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    height: 50px; /* Adjust the size of your logo image */
+    margin-right: 10px; /* Space between the image and text */
+}
+
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
+    height: 25px; /* Adjust height to ensure space for bars */
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.menu-icon .bar {
+    height: 4px;
+    background-color: white;
+    width: 100%;
+    transition: all 0.3s ease;
+    position: absolute;
+}
+
+.menu-icon .bar1 {
+    top: 0;
+}
+
+.menu-icon .bar2 {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-icon .bar3 {
+    bottom: 0;
+}
+
+nav {
+    display: none;
+    opacity: 0;
+    transform: translateX(-100%); /* Start hidden off-screen */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 400%;
+    width: 140px; /* Adjust width for bubble effect */
+    background-color: #FF6600;
+    border-top-left-radius: 20px; /* Rounded corners for bubble effect */
+    border-bottom-left-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* Navigation menu open state */
+nav.open {
+    display: block;
+    opacity: 1;
+    transform: translateX(0); /* Slide into view */
+}
+
+/* Navigation menu list styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto; /* Enable scrolling if needed */
+}
+
+/* Navigation menu item styles */
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease, padding-left 0.3s ease; /* Smooth transition */
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding-left: 30px; /* Indicate active item with padding */
+}
+
+@media (min-width: 768px) {
+    nav {
+        display: block;
+        opacity: 1;
+        transform: none; /* Remove transform for larger screens */
+        position: static;
+        width: auto; /* Default width */
+        height: auto; /* Default height */
+        background-color: transparent; /* Transparent background */
+        box-shadow: none; /* Remove shadow for larger screens */
+        border-radius: 0; /* Remove rounded corners for larger screens */
+    }
+
+    nav ul {
+        flex-direction: row; /* Horizontal layout */
+    }
+
+    nav ul li {
+        margin: 0 20px; /* Spacing between menu items */
+    }
+
+    nav ul li a {
+        padding: 15px 20px;
+    }
+
+    .menu-icon {
+        display: none; /* Hide menu icon on large screens */
+    }
+}
+
+
+
+.open .bar1 {
+    transform: rotate(45deg);
+    top: 50%;
+    margin-top: -2px; /* Adjust for better alignment */
+}
+
+.open .bar2 {
+    opacity: 0;
+}
+
+.open .bar3 {
+    transform: rotate(-45deg);
+    bottom: 50%;
+    margin-bottom: -2px; /* Adjust for better alignment */
+}
+
+nav.open {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: linear-gradient(45deg, #8c52ff, #ff914d);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+/* תפריט ראשי */
+/* תפריט ראשי */
+
+.scroll-line-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 5;
+}
+
+.scroll-line {
+    position: absolute;
+    left: 3px; /* Adjust the position as needed */
+    width: 4px; /* Adjust the width as needed */
+    height: 80vh; /* Make the bar longer */
+    background: linear-gradient(45deg, #ff914d, #8c52ff); /* Gradient color */
+    border-radius: 2px; /* Rounded edges */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow for a modern look */
+    transition: top 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth and modern transition */
+}
+
+.dummy-content {
+    height: 3000px; /* Adjust the height as needed to create scrollable content */
+    background: linear-gradient(white, lightgray);
+}
+/* תפריט ראשי */
+/* תפריט ראשי */
+
+
+
+
+.beautiful-section {
+    background: linear-gradient(135deg, #8c52ff, #ff914d);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    max-width: 1800px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    left: 50px;
+}
+
+.beautiful-section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.text-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.text-container p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.cta-button {
+    padding: 15px 30px;
+    background: #4CAF50;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #3e8e41;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .beautiful-section {
+        max-width: 400px;
+        left: 50px;
+
+    }
+
+    .text-container h2 {
+        font-size: 24px;
+    }
+
+    .text-container p {
+        font-size: 16px;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .beautiful-section {
+        padding: 20px;
+    }
+
+    .text-container h2 {
+        font-size: 22px;
+    }
+
+    .text-container p {
+        font-size: 14px;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+
+
+
+/* באנר */
+/* באנר */
+.banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+.large-screen {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .large-screen {
+        display: none;
+    }
+    .small-screen {
+        display: block;
+    }
+}
+/* באנר */
+/* באנר */
+
+
+
+
+/* main */
+/* main */
+header {
+    
+    padding: 10px 20px;
+    color: white;
+}
+
+main {
+    padding: 20px;
+}
+
+
+.beautiful-squares {
+    width: 100%;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.square {
+    flex: 1;
+    min-width: 300px;
+    max-width: 32%;
+    height: 400px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    width: 80%; /* or any width you prefer */
+    margin: 0 auto;
+}
+
+.square:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.square img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.seam {
+    height: 5px;
+    background: linear-gradient(45deg, #8c52ff, #ff914d);
+    margin: 20px 0;
+    width: 0;
+    transition: width 0.5s ease-in-out;
+}
+
+.square:hover .seam {
+    width: 100%;
+}
+
+.info-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8c52ff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.info-btn:hover {
+    background-color: #ff914d;
+}
+
+@media (max-width: 1024px) {
+    .square {
+        max-width: 48%;
+    }
+}
+
+@media (max-width: 768px) {
+    .square {
+        max-width: 100%;
+       left: -15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .square {
+        height: 450px;
+    }
+
+    .square img {
+        height: 300px;
+    }
+
+    .info-btn {
+        padding: 15px;
+        font-size: 18px;
+    }
+}
+
+/* main */
+/* main */
+
+.rectangle {
+    background: #4CAF50; /* Green color */
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.rectangle:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.rectangle h1 {
+    margin: 0;
+    font-size: 22px;
+    text-align: center;
+}
+
+.rectangle p {
+    margin: 15px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.rectangle button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #ff914d; /* Orange color */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.rectangle button:hover {
+    background: #ff704d; /* Darker orange */
+    transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+    .rectangle {
+        padding: 15px;
+    }
+
+    .rectangle h1 {
+        font-size: 20px;
+    }
+
+    .rectangle p {
+        font-size: 14px;
+    }
+
+    .rectangle button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .rectangle {
+        padding: 10px;
+    }
+
+    .rectangle h1 {
+        font-size: 18px;
+    }
+
+    .rectangle p {
+        font-size: 12px;
+    }
+
+    .rectangle button {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
